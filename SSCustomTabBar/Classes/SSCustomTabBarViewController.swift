@@ -12,7 +12,7 @@ import UIKit
 /// Default index value for priviousSelectedIndex
 private let defaultIndexValue = -1
 
-public class SSCustomTabBarViewController: UITabBarController {
+open class SSCustomTabBarViewController: UITabBarController {
     
     // MARK: - Overrides
     
@@ -58,7 +58,7 @@ public class SSCustomTabBarViewController: UITabBarController {
     
     private var priviousSelectedIndex: Int = defaultIndexValue
     
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         self.setObserver()
         // Do any additional setup after loading the view.
@@ -68,7 +68,7 @@ public class SSCustomTabBarViewController: UITabBarController {
     /// Notifies the view controller that its view was added to a view hierarchy.
     ///
     /// - Parameter animated: variable for namiation
-    override public func viewDidAppear(_ animated: Bool) {
+    override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setup()
     }
@@ -117,7 +117,7 @@ public class SSCustomTabBarViewController: UITabBarController {
 
 // MARK: - set bar height
 extension SSCustomTabBarViewController {
-    override public func viewWillLayoutSubviews() {
+    override open func viewWillLayoutSubviews() {
         guard var height = kBarHeight else { return }
         height += self.view.safeAreaInsets.bottom
         var tabBarFrame = self.tabBar.frame
@@ -138,7 +138,7 @@ extension SSCustomTabBarViewController {
     /// - Parameters:
     ///   - tabBar: The tab bar that is being customized.
     ///   - item: The tab bar item that was selected.
-    override public func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+    override open func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         
         if let uSelf = self.tabBar as? SSCustomTabBar, let items = uSelf.items, let index = items.firstIndex(of: item), index != self.priviousSelectedIndex {
             
@@ -200,5 +200,4 @@ extension SSCustomTabBarViewController {
             }, completion: nil)
         }
     }
-    
 }
